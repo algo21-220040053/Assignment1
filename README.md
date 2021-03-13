@@ -1,2 +1,2 @@
 # Assignment1
-The assignment about time series prediction for Algo Trading。
+The project is an assignment about time series prediction for Algo Trading.
