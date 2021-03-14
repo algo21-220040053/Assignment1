@@ -39,8 +39,8 @@ def ts_plot(data, lags=None, title=''):
 
 df = pd.read_csv('BTC.csv', header=0)
 df['ret'] = np.log(df.Price/df.Price.shift(1))
-max_lag = 30
 Y = df.ret.dropna()
+max_lag = 30
 
 adf_check = ts.adfuller(Y, max_lag, regression='c', autolag='AIC', store=False, regresults=False)
 print('平稳性检验结果：'+ str(adf_check))
