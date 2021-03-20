@@ -11,13 +11,12 @@ The weakness of ARMA model is that it ignores the volatility aggregation effect 
 ARIMA models is an extension of ARMA model. In reality, many time series are not stationary, but they can be stabilized by difference, that is, nonstationary machine can be transformed into stationary white noise by first-order difference. Because the ARMA model has the assumption that the time series are stationary, if the time series have a significant upward or downward trend, the prediction effect of the model is greatly discounted. For the data set with obvious downward or upward trend, it can be transformed into stationary series by difference method, and then fitted by ARMA model.
 ## Implementation process
 First of all, the historical transaction data of BTC is used to calculate the rate of return. And output its sequence diagram, autocorrelation coefficient diagram, PP diagram, QQ diagram.
-<img width="560" alt="BTC收益率图" src="https://user-images.githubusercontent.com/78734848/111870093-9ebddf80-89bd-11eb-8fb2-23c9bb3df44c.png">
+<img width="640" alt="BTC收益率图" src="https://user-images.githubusercontent.com/78734848/111870129-d3319b80-89bd-11eb-9cbb-10199f4b3f53.png">
 Using ARIMA model, the optimal model is (3,0,3).
 <img width="560" alt="arima实验结果" src="https://user-images.githubusercontent.com/78734848/111869878-5b16a600-89bc-11eb-8448-ffd4ad268465.png">
 Output model residual diagram.
-![BTC残差图](https://user-images.githubusercontent.com/78734848/111869906-7c779200-89bc-11eb-8423-dde8ec4dab3a.png)
+<img width="640" alt="BTC残差图" src="https://user-images.githubusercontent.com/78734848/111869906-7c779200-89bc-11eb-8423-dde8ec4dab3a.png">
 The best model is a differential of 0 because we use yield data, as opposed to using the first time log difference to calculate the stock yield.The results of model residual diagram are basically the same as the original data above.Obviously, the ARIMA model is unable to explain the conditional volatility in the time series.
 We use in-sample and out-of-sample predictions and output the following results:
-![样本内预测](https://user-images.githubusercontent.com/78734848/111869954-cc565900-89bc-11eb-8957-7f952f2f1c5a.png)
-![20天预测](https://user-images.githubusercontent.com/78734848/111869961-d2e4d080-89bc-11eb-9f98-d4bf0af42c22.png)
-
+<img width="640" alt="样本内预测" src="https://user-images.githubusercontent.com/78734848/111869954-cc565900-89bc-11eb-8957-7f952f2f1c5a.png">
+<img width="560" alt="20天预测" src="https://user-images.githubusercontent.com/78734848/111869961-d2e4d080-89bc-11eb-9f98-d4bf0af42c22.png">
