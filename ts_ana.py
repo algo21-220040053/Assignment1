@@ -115,7 +115,7 @@ if __name__ == '__main__':
     ts = ArimaMethod(Y, df)
     max_lag = 30
     ts.ts_plot(ts.data,max_lag, 'Bitcoin')
-    ts.get_best_model(2,2)
+    ts.get_best_model(5,2)
     # 对拟合残差进行可视化
     ts.show_resid(max_lag)
     # 对BTC历史收益率进行预测
