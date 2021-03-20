@@ -37,5 +37,6 @@ The model detail is the following:
 <div align=center><img width="589" alt="GARCH实验结果" src="https://user-images.githubusercontent.com/78734848/111871174-c7e16e80-89c3-11eb-9ca3-8f7a5182d55d.png"><div align=left>
 Output model residual diagram.
 <div align=center><img width="640" alt="BTC残差图" src="https://user-images.githubusercontent.com/78734848/111871244-da5ba800-89c3-11eb-9628-a9d38d7deee0.png"><div align=left>
+  There is not a great different between the residual diagram of ARIMA model and GARCH model. GARCH model does not fit the data quite well.
 
 
