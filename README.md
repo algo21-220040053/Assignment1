@@ -9,6 +9,7 @@ ARMA model is the combination of AR (P) and MA (q) models
 The weakness of ARMA model is that it ignores the volatility aggregation effect in most financial time series.
 <img width="427" alt="公式" src="https://user-images.githubusercontent.com/78734848/111869735-b4caa080-89bb-11eb-9827-ac542d2ea638.png">
 ARIMA models is an extension of ARMA model. In reality, many time series are not stationary, but they can be stabilized by difference, that is, nonstationary machine can be transformed into stationary white noise by first-order difference. Because the ARMA model has the assumption that the time series are stationary, if the time series have a significant upward or downward trend, the prediction effect of the model is greatly discounted. For the data set with obvious downward or upward trend, it can be transformed into stationary series by difference method, and then fitted by ARMA model.
+
 ## Implementation process
 First of all, the historical transaction data of BTC is used to calculate the rate of return. And output its sequence diagram, autocorrelation coefficient diagram, PP diagram, QQ diagram.
 <img width="640" alt="BTC收益率图" src="https://user-images.githubusercontent.com/78734848/111870129-d3319b80-89bd-11eb-9cbb-10199f4b3f53.png">
