@@ -4,7 +4,7 @@ import statsmodels.tsa.api as smt
 import statsmodels.api as sm
 import scipy.stats as scs
 import matplotlib.pyplot as plt
-
+from arch import arch_model
 
 class ArimaMethod:
     def __init__(self, data, df):
@@ -68,14 +68,14 @@ class ArimaMethod:
 
     def show_resid(self, lag):   # 对拟合残差进行可视化
         resid = pd.Series(self.best_mdl.resid, index=self.data.index)
-        self.ts_plot(resid, lags=lag, title='BTC价格ARIMA残差')
+        self.ts_plot(resid, lags=lag, title='BTC收益率ARIMA残差')
 
     def prediction(self):       # 样本内预测,并进行可视化
         plt.style.use('ggplot')
         fig = plt.figure(figsize=(12, 7))
         ax = plt.gca()
         ts = self.data[-500:].copy()
-        ts.plot(ax=ax, label='HS300收益率')
+        ts.plot(ax=ax, label='BTC收益率')
         # 样本内预测
         pred = self.best_mdl.predict(start=961, end=1460, dynamic=False)
         pf = pd.Series(pred, index=ts.index)
@@ -104,7 +104,7 @@ class ArimaMethod:
         plt.title('{} 天BTC收益率预测\nARIMA{}'.format(n_steps, self.best_order))
         plt.rcParams['font.sans-serif'] = ['SimHei']
         plt.rcParams['axes.unicode_minus'] = False
-        plt.legend(loc='best', fontsize=10)
+        plt.legend(loc='lower right', fontsize=8)
         plt.show()
 
 
@@ -114,12 +114,19 @@ if __name__ == '__main__':
     Y = df.ret.dropna()
     ts = ArimaMethod(Y, df)
     max_lag = 30
-    ts.ts_plot(ts.data,max_lag, 'Bitcoin')
+    ts.ts_plot(ts.data,max_lag, 'Bitcoin收益率')
     ts.get_best_model(5,2)
     # 对拟合残差进行可视化
     ts.show_resid(max_lag)
     # 对BTC历史收益率进行预测
     ts.prediction()
     # 对BTC收益率未来5天进行预测
-    steps = 5
+    steps = 20
     ts.forecast(steps)
+
+    # 使用GARCH模型
+    am = arch_model(Y, vol='Garch', p=3, o=0, q=3, dist='StudentsT')
+    res = am.fit(update_freq=5, disp='off')
+    print(res.summary())
+    resid = pd.Series(res.resid, index=Y.index)
+    ts.ts_plot(resid, 30, 'GARCH残差图')
