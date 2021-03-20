@@ -11,7 +11,7 @@ The weakness of ARMA model is that it ignores the volatility aggregation effect 
 ARIMA models is an extension of ARMA model. In reality, many time series are not stationary, but they can be stabilized by difference, that is, nonstationary machine can be transformed into stationary white noise by first-order difference. Because the ARMA model has the assumption that the time series are stationary, if the time series have a significant upward or downward trend, the prediction effect of the model is greatly discounted. For the data set with obvious downward or upward trend, it can be transformed into stationary series by difference method, and then fitted by ARMA model.
 ## Implementation process
 First of all, the historical transaction data of BTC is used to calculate the rate of return. And output its sequence diagram, autocorrelation coefficient diagram, PP diagram, QQ diagram.
-![BTC收益率图](https://user-images.githubusercontent.com/78734848/111869885-6538a480-89bc-11eb-89d6-ff233b5c4671.png)
+(img width="560" alt="BTC收益率图" src="https://user-images.githubusercontent.com/78734848/111869885-6538a480-89bc-11eb-89d6-ff233b5c4671.png")
 Using ARIMA model, the optimal model is (3,0,3).
 <img width="560" alt="arima实验结果" src="https://user-images.githubusercontent.com/78734848/111869878-5b16a600-89bc-11eb-8448-ffd4ad268465.png">
 Output model residual diagram.
